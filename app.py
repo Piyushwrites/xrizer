@@ -85,12 +85,12 @@ st.title("🚀 Xrizer")
 st.caption("AI Meeting & Video Summarizer — Built by Piyush ❤️")
 
 # Secure key input (never saved)
-gemini_key = st.text_input("🔑 Enter your Gemini API Key", type="password", 
-                          help="Only used for this session. Safe & private.")
 
-if not gemini_key:
-    st.warning("👆 Paste your Gemini API key above to start using Xrizer.")
-    st.stop()
+# Use secret from Streamlit Cloud (set in app settings)
+GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+genai.configure(api_key=GEMINI_API_KEY)
+model = genai.GenerativeModel("gemini-2.5-flash")
+st.success("✅ Xrizer is ready!")
 
 genai.configure(api_key=gemini_key)
 model = genai.GenerativeModel("gemini-2.5-flash")
