@@ -77,7 +77,7 @@ st.markdown("""
 
 st.set_page_config(
     page_title="Xrizer – AI Meeting & Video Summarizer",
-    page_icon=""https://raw.githubusercontent.com/Piyushwrites/xrizer/main/LOGO.png"",  # Temporary free icon - replace with your own
+    page_icon="https://raw.githubusercontent.com/Piyushwrites/xrizer/main/LOGO.png",  # Temporary free icon - replace with your own
     layout="centered"
 )
 
