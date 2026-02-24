@@ -81,6 +81,20 @@ st.set_page_config(
     layout="centered"
 )
 
+import streamlit as st
+from youtube_transcript_api import YouTubeTranscriptApi
+import google.generativeai as genai
+
+# ────────────────────────────────────────────────
+# Use hidden server-side key from Streamlit Secrets
+# ────────────────────────────────────────────────
+GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+
+genai.configure(api_key=GEMINI_API_KEY)
+model = genai.GenerativeModel("gemini-2.5-flash")   # ← correct model name!
+
+st.success("✅ Xrizer is ready!")
+
 st.title("🚀 Xrizer")
 st.caption("AI Meeting & Video Summarizer — Built by Piyush ❤️")
 
