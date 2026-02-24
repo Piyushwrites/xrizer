@@ -1,115 +1,42 @@
-# ========================
-# XRIZER PERMANENT WEB APP - DAY 1.5 (Professional Version)
-# ========================
-
-import streamlit as st
-from youtube_transcript_api import YouTubeTranscriptApi
-import google.generativeai as genai
-# Custom CSS for premium polish
-st.markdown("""
-    <style>
-        /* Better spacing & centering */
-        .block-container {
-            padding-top: 1rem !important;
-            padding-bottom: 2rem !important;
-            max-width: 800px !important;  /* Keeps it centered on wide screens */
-        }
-        
-        /* Title styling - bigger, bolder */
-        h1 {
-            text-align: center;
-            font-size: 2.5rem !important;
-            margin-bottom: 0.5rem !important;
-            color: #ffffff;  /* White for contrast in dark mode */
-        }
-        
-        /* Caption - subtle & centered */
-        .stCaption {
-            text-align: center;
-            color: #9ca3af !important;  /* Soft gray */
-            font-size: 0.95rem !important;
-        }
-        
-        /* Buttons - premium feel with hover animation */
-        .stButton > button {
-            width: 100%;
-            height: 3rem;
-            font-weight: 600;
-            border-radius: 0.5rem;
-            background-color: #3b82f6;  /* Blue for primary action */
-            color: white;
-            border: none;
-            transition: all 0.2s ease;
-        }
-        .stButton > button:hover {
-            background-color: #2563eb;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);  /* Subtle blue glow */
-        }
-        
-        /* Inputs - clean borders & focus */
-        .stTextInput > div > div > input,
-        .stTextArea > div > div > textarea {
-            border-radius: 0.5rem;
-            border: 1px solid #4b5563;  /* Soft gray border */
-            background-color: #1f2937;  /* Darker input bg */
-            color: white;
-        }
-        .stTextInput > div > div > input:focus,
-        .stTextArea > div > div > textarea:focus {
-            border-color: #3b82f6;  /* Blue focus ring */
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-        }
-        
-        /* Success/alert boxes - rounded */
-        .stSuccess, .stWarning, .stError, .stInfo {
-            border-radius: 0.5rem;
-            padding: 1rem !important;
-        }
-        
-        /* Mobile responsiveness - ensure no overflow */
-        @media (max-width: 640px) {
-            .block-container { padding-left: 1rem !important; padding-right: 1rem !important; }
-            h1 { font-size: 2rem !important; }
-        }
-    </style>
-""", unsafe_allow_html=True)
-
-st.set_page_config(
-    page_title="Xrizer – AI Meeting & Video Summarizer",
-    page_icon="https://raw.githubusercontent.com/Piyushwrites/xrizer/main/LOGO.png",  # Temporary free icon - replace with your own
-    layout="centered"
-)
-
 import streamlit as st
 from youtube_transcript_api import YouTubeTranscriptApi
 import google.generativeai as genai
 
 # ────────────────────────────────────────────────
-# Use hidden server-side key from Streamlit Secrets
+# Server-side Gemini Key (Hidden & Secure)
 # ────────────────────────────────────────────────
 GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
 
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel("gemini-2.5-flash")   # ← correct model name!
+model = genai.GenerativeModel("gemini-2.5-flash")
 
-st.success("✅ Xrizer is ready!")
+# ────────────────────────────────────────────────
+# Visual Polish (already added earlier)
+# ────────────────────────────────────────────────
+st.set_page_config(
+    page_title="Xrizer – AI Meeting & Video Summarizer",
+    page_icon="🚀",
+    layout="centered"
+)
+
+# Custom CSS (keep your previous CSS if you added it)
+st.markdown("""
+    <style>
+    .block-container { padding-top: 1rem !important; padding-bottom: 2rem !important; max-width: 800px !important; }
+    h1 { text-align: center; font-size: 2.5rem !important; margin-bottom: 0.5rem !important; }
+    .stCaption { text-align: center; color: #9ca3af !important; font-size: 0.95rem !important; }
+    .stButton > button { width: 100%; height: 3rem; font-weight: 600; border-radius: 0.5rem; }
+    .stButton > button:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
+    </style>
+""", unsafe_allow_html=True)
 
 st.title("🚀 Xrizer")
 st.caption("AI Meeting & Video Summarizer — Built by Piyush ❤️")
 
-# Secure key input (never saved)
-
-# Use secret from Streamlit Cloud (set in app settings)
-GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
-genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel("gemini-2.5-flash")
+# ←←← ONLY ONE SUCCESS MESSAGE HERE ←←←
 st.success("✅ Xrizer is ready!")
 
-genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel("gemini-2.5-flash")
-
-st.success("✅ Xrizer is ready!")
+tab1, tab2 = st.tabs(["📝 Paste Text / Meeting Notes", "🎥 YouTube Video"])
 
 tab1, tab2 = st.tabs(["📝 Paste Text / Meeting Notes", "🎥 YouTube Video"])
 
