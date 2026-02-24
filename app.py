@@ -38,8 +38,6 @@ st.success("✅ Xrizer is ready!")
 
 tab1, tab2 = st.tabs(["📝 Paste Text / Meeting Notes", "🎥 YouTube Video"])
 
-tab1, tab2 = st.tabs(["📝 Paste Text / Meeting Notes", "🎥 YouTube Video"])
-
 with tab1:
     text = st.text_area("Paste your meeting notes or transcript here...", height=220)
     if st.button("✨ Generate Summary", type="primary", use_container_width=True):
