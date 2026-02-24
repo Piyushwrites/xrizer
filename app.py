@@ -75,7 +75,11 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.set_page_config(page_title="Xrizer", page_icon="🚀", layout="centered")
+st.set_page_config(
+    page_title="Xrizer – AI Meeting & Video Summarizer",
+    page_icon="https://i.imgur.com/0k7jX0C.png",  # Temporary free icon - replace with your own
+    layout="centered"
+)
 
 st.title("🚀 Xrizer")
 st.caption("AI Meeting & Video Summarizer — Built by Piyush ❤️")
