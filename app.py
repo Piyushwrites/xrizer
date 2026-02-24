@@ -106,7 +106,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel("gemini-2.5-flash")
 st.success("✅ Xrizer is ready!")
 
-genai.configure(api_key=gemini_key)
+genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel("gemini-2.5-flash")
 
 st.success("✅ Xrizer is ready!")
