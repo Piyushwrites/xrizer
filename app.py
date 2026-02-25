@@ -23,7 +23,15 @@ st.set_page_config(
 )
 
 st.markdown("""
+    # Hide Streamlit default branding completely
+st.markdown("""
     <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    .stDeployButton {display: none;}
+    </style>
+<style>
+""", unsafe_allow_html=True)
     .block-container { padding-top: 1rem !important; padding-bottom: 2rem !important; max-width: 800px !important; }
     h1 { text-align: center; font-size: 2.5rem !important; margin-bottom: 0.5rem !important; }
     .stCaption { text-align: center; color: #9ca3af !important; font-size: 0.95rem !important; }
