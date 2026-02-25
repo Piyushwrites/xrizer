@@ -17,9 +17,11 @@ model = genai.GenerativeModel("gemini-2.5-flash")
 
 # Visual Polish (your previous CSS)
 st.set_page_config(
-    page_title="Xrizer – AI Meeting & Video Summarizer",
+    page_title="Xrizer - Meeting & Video Summarizer — Built by Piyush ❤️",           # This is what will show in the browser tab
     page_icon="🚀",
-    layout="centered"
+    layout="centered",
+    initial_sidebar_state="collapsed",
+    menu_items={}                  # Hides extra Streamlit menu
 )
 
 st.markdown("""
@@ -39,9 +41,24 @@ st.markdown("""
     .stButton > button:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
     </style>
 """, unsafe_allow_html=True)
+# Force clean browser tab title and hide any remaining Streamlit references
+st.markdown("""
+    <style>
+        /* Force browser tab title */
+        title { display: none !important; }
+        
+        /* Hide any Streamlit branding */
+        #MainMenu {visibility: hidden !important;}
+        footer {visibility: hidden !important;}
+        .stDeployButton {display: none !important;}
+        
+        /* Extra safety for tab title */
+        .stApp header { display: none !important; }
+    </style>
+""", unsafe_allow_html=True)
 
 st.title("Xrizer")
-st.caption("AI Meeting & Video Summarizer — Built by Piyush ❤️")
+st.caption("Meeting & Video Summarizer — Built by Piyush ❤️")
 
 st.success("Xrizer is ready!")
 
@@ -51,7 +68,7 @@ with tab1:
     text = st.text_area("Paste your meeting notes or transcript here...", height=220)
     if st.button("✨ Generate Summary", type="primary", use_container_width=True):
         with st.spinner("Xrizer is thinking..."):
-            prompt = f"""You are Xrizer — the world's best AI meeting & video summarizer.
+            prompt = f"""You are Xrizer — the world's best meeting & video summarizer.
 
 Return ONLY in this exact format:
 
