@@ -32,10 +32,10 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.title("🚀 Xrizer")
+st.title("Xrizer")
 st.caption("AI Meeting & Video Summarizer — Built by Piyush ❤️")
 
-st.success("✅ Xrizer is ready!")
+st.success("Xrizer is ready!")
 
 tab1, tab2 = st.tabs(["📝 Paste Text / Meeting Notes", "🎥 YouTube Video"])
 
@@ -97,4 +97,4 @@ Transcript: {full_text[:15000]}""")
             except:
                 st.error("Transcript not available. Try another public YouTube video.")
 
-st.caption("Made with ❤️ by Piyush | Project Xrizer | 70+hour dedication 🔥")
+st.caption("Made with ❤️ by Piyush | Project Xrizer | 70+ hour of dedication")
