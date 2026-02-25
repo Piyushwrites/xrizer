@@ -1,25 +1,27 @@
 import streamlit as st
 from youtube_transcript_api import YouTubeTranscriptApi
 import google.generativeai as genai
+import os
 
 # ────────────────────────────────────────────────
-# Server-side Gemini Key (Hidden & Secure)
+# Server-side Gemini Key (from Render Environment Variables)
 # ────────────────────────────────────────────────
-GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+if not GEMINI_API_KEY:
+    st.error("Missing API key. Please contact the developer.")
+    st.stop()
 
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel("gemini-2.5-flash")
 
-# ────────────────────────────────────────────────
-# Visual Polish (already added earlier)
-# ────────────────────────────────────────────────
+# Visual Polish (your previous CSS)
 st.set_page_config(
     page_title="Xrizer – AI Meeting & Video Summarizer",
     page_icon="🚀",
     layout="centered"
 )
 
-# Custom CSS (keep your previous CSS if you added it)
 st.markdown("""
     <style>
     .block-container { padding-top: 1rem !important; padding-bottom: 2rem !important; max-width: 800px !important; }
@@ -33,7 +35,6 @@ st.markdown("""
 st.title("🚀 Xrizer")
 st.caption("AI Meeting & Video Summarizer — Built by Piyush ❤️")
 
-# ←←← ONLY ONE SUCCESS MESSAGE HERE ←←←
 st.success("✅ Xrizer is ready!")
 
 tab1, tab2 = st.tabs(["📝 Paste Text / Meeting Notes", "🎥 YouTube Video"])
