@@ -3,9 +3,7 @@ from youtube_transcript_api import YouTubeTranscriptApi
 import google.generativeai as genai
 import os
 
-# ────────────────────────────────────────────────
-# Server-side Gemini Key (from Render Environment Variables)
-# ────────────────────────────────────────────────
+# Server-side Gemini Key (from Render)
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 if not GEMINI_API_KEY:
@@ -15,45 +13,27 @@ if not GEMINI_API_KEY:
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel("gemini-2.5-flash")
 
-# Visual Polish (your previous CSS)
+# Page config
 st.set_page_config(
-    page_title="Xrizer - Meeting & Video Summarizer — Built by Piyush ❤️",           # This is what will show in the browser tab
+    page_title="Xrizer",
     page_icon="🚀",
     layout="centered",
-    initial_sidebar_state="collapsed",
-    menu_items={}                  # Hides extra Streamlit menu
+    initial_sidebar_state="collapsed"
 )
 
-st.markdown("""
-    # Hide Streamlit default branding completely
-st.markdown("""
-    <style>
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    .stDeployButton {display: none;}
-    </style>
-<style>
-""", unsafe_allow_html=True)
-    .block-container { padding-top: 1rem !important; padding-bottom: 2rem !important; max-width: 800px !important; }
-    h1 { text-align: center; font-size: 2.5rem !important; margin-bottom: 0.5rem !important; }
-    .stCaption { text-align: center; color: #9ca3af !important; font-size: 0.95rem !important; }
-    .stButton > button { width: 100%; height: 3rem; font-weight: 600; border-radius: 0.5rem; }
-    .stButton > button:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
-    </style>
-""", unsafe_allow_html=True)
-# Force clean browser tab title and hide any remaining Streamlit references
+# Clean CSS - hides all Streamlit branding
 st.markdown("""
     <style>
-        /* Force browser tab title */
-        title { display: none !important; }
+        .block-container { padding-top: 1rem !important; padding-bottom: 2rem !important; max-width: 800px !important; }
+        h1 { text-align: center; font-size: 2.5rem !important; margin-bottom: 0.5rem !important; }
+        .stCaption { text-align: center; color: #9ca3af !important; font-size: 0.95rem !important; }
+        .stButton > button { width: 100%; height: 3rem; font-weight: 600; border-radius: 0.5rem; }
+        .stButton > button:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
         
-        /* Hide any Streamlit branding */
-        #MainMenu {visibility: hidden !important;}
-        footer {visibility: hidden !important;}
-        .stDeployButton {display: none !important;}
-        
-        /* Extra safety for tab title */
-        .stApp header { display: none !important; }
+        /* Hide all Streamlit branding */
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        .stDeployButton {display: none;}
     </style>
 """, unsafe_allow_html=True)
 
